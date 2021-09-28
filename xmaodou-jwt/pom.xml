@@ -4,12 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>xmaodou-security</artifactId>
-        <groupId>com.xmd</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>com.github.i21mscz23</groupId>
+        <version>1.0.1-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>xmaodou-jwt</name>
     <artifactId>xmaodou-jwt</artifactId>
+    <url>https://github.com/i21mscz23/xmaodou-security</url>
+    <description>jwt</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
