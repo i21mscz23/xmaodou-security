@@ -7,7 +7,7 @@
     <groupId>com.github.i21mscz23</groupId>
     <artifactId>xmaodou-security</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
     <url>https://github.com/i21mscz23/xmaodou-security</url>
     <description>security</description>
     <name>security</name>
@@ -21,7 +21,6 @@
         <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
         <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
-
     </properties>
 
     <scm>
