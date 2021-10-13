@@ -2,9 +2,9 @@ package com.xmd.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Maps;
-import com.mscz.response.ServerResponse;
 import com.xmd.handler.jwt.JwtHandler;
 import com.xmd.properties.JwtProperties;
+import com.xmd.response.ServerResponse;
 import com.xmd.service.SecurityService;
 import com.xmd.user.JwtUserDetails;
 import com.xmd.user.SecurityConst;
@@ -13,7 +13,6 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
