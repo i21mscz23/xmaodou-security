@@ -8,6 +8,7 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.xmd.user.JwtUserDetails;
 import com.xmd.utils.TimeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -102,7 +103,12 @@ public class JwtHandler {
         JwtUserDetails userDetails = null;
         if(claims != null){
             String username = claims.get("username").asString();
-            userDetails = new JwtUserDetails(username,null,null, AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
+            String userId = null;
+            if(claims.get("userId") != null && StringUtils.isNotBlank(claims.get("userId").asString())){
+                userId = claims.get("userId").asString();
+            }
+
+            userDetails = new JwtUserDetails(username,null,null, AuthorityUtils.createAuthorityList("ROLE_ADMIN"),userId);
             userDetails.setAdmin(claims.get("isAdmin").asBoolean());
         }
 

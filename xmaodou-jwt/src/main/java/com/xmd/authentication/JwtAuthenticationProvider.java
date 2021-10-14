@@ -1,12 +1,12 @@
 package com.xmd.authentication;
 
-import com.xmd.user.JwtUserDetails;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -26,15 +26,15 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
         JwtAuthenticationToken authenticationToken = (JwtAuthenticationToken) authentication;
 
-        JwtUserDetails user = (JwtUserDetails) userDetailsService.loadUserByUsername((String) authenticationToken.getPrincipal());
+        UserDetails userDetails = userDetailsService.loadUserByUsername((String) authenticationToken.getPrincipal());
 
-        if (user == null) {
+        if (userDetails == null) {
             throw new InternalAuthenticationServiceException("无法获取用户信息");
         }
 
-        check(authentication.getCredentials(),user.getPassword());
+        check(authentication.getCredentials(),userDetails.getPassword());
 
-        JwtAuthenticationToken authenticationResult = new JwtAuthenticationToken(user,authenticationToken.getCredentials(), user.getAuthorities());
+        JwtAuthenticationToken authenticationResult = new JwtAuthenticationToken(userDetails,authenticationToken.getCredentials(), userDetails.getAuthorities());
 
         authenticationResult.setDetails(authenticationToken.getDetails());
 

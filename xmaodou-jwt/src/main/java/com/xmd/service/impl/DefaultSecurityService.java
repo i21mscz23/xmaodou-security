@@ -36,7 +36,7 @@ public class DefaultSecurityService implements SecurityService {
     public JwtUserDetails check(String username) {
         //默认登陆，账号随意，密码123908
         return new JwtUserDetails(username,"$2a$10$49CiAqKl.7DcuCViWCjNO.qCcPgui6eycalYkXtjQHNR0B7zdlXkK",
-                jwtProperties.getJwtExpiration(), AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
+                jwtProperties.getJwtExpiration(), AuthorityUtils.createAuthorityList("ROLE_ADMIN"),null);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class DefaultSecurityService implements SecurityService {
 
     @Override
     public Object accessDenied(AccessDeniedException e) {
-        return ServerResponse.createByErrorCodeMessage("用户鉴权失败，请联系管理员",40003);
+        return ServerResponse.createByErrorCodeMessage("权限拦截，必要时请联系管理员",40002);
     }
 
     @Override

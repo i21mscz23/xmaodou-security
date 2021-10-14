@@ -3,6 +3,8 @@ package com.xmd.properties;
 import com.xmd.user.SecurityConst;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.List;
+
 /**
  * @Description
  * @Author lixiao
@@ -27,6 +29,11 @@ public class JwtProperties {
      */
     private Long jwtExpiration = SecurityConst.JWT_EXPIRATION_TIME;
 
+    /**
+     * 请求地址白名单
+     */
+    private List<String> whiteList;
+
     public String getLoginUrl() {
         return loginUrl;
     }
@@ -49,5 +56,13 @@ public class JwtProperties {
 
     public void setJwtExpiration(Long jwtExpiration) {
         this.jwtExpiration = jwtExpiration;
+    }
+
+    public List<String> getWhiteList() {
+        return whiteList;
+    }
+
+    public void setWhiteList(List<String> whiteList) {
+        this.whiteList = whiteList;
     }
 }

@@ -29,7 +29,7 @@ public class UserAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException {
         httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+//        httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
         Object result = securityService.accessDenied(e);
 
         httpServletResponse.getWriter().write(objectMapper.writeValueAsString(result));

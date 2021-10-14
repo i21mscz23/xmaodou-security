@@ -5,7 +5,8 @@
     <parent>
         <artifactId>xmaodou-security</artifactId>
         <groupId>com.github.i21mscz23</groupId>
-        <version>1.0.1-RELEASE</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <name>xmaodou-jwt</name>

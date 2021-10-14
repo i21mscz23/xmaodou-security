@@ -14,6 +14,11 @@ import java.util.List;
  */
 public class JwtUserDetails implements UserDetails {
 
+    /**
+     * 用户编号
+     */
+    private String userId;
+
     private String username;
 
     /**
@@ -30,18 +35,21 @@ public class JwtUserDetails implements UserDetails {
      */
     private boolean isAdmin;
 
+
+
     @JsonIgnore
     private List<GrantedAuthority> authorities;
 
     public JwtUserDetails() {
     }
 
-    public JwtUserDetails(String username, String password, Long expirationTime, List<GrantedAuthority> authorities){
+    public JwtUserDetails(String username, String password, Long expirationTime, List<GrantedAuthority> authorities,String userId){
         this.username = username;
         this.password = password;
         this.expirationTime = expirationTime;
         this.authorities = authorities;
         this.loginTime = System.currentTimeMillis();
+        this.userId = userId;
 
     }
 
@@ -106,5 +114,13 @@ public class JwtUserDetails implements UserDetails {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
