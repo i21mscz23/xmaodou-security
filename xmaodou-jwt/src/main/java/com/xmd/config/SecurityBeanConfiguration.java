@@ -23,6 +23,9 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * @Description bean 配置类
@@ -99,5 +102,24 @@ public class SecurityBeanConfiguration {
     public SecurityService defaultSecurityService(){
 
         return new DefaultSecurityService();
+    }
+
+    private CorsConfiguration buildConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*"); // 1允许任何域名使用
+        corsConfiguration.addAllowedHeader("*"); // 2允许任何头
+        corsConfiguration.addAllowedMethod("*"); // 3允许任何方法（post、get等）
+        return corsConfiguration;
+    }
+
+    /**
+     * 跨域
+     * @return
+     */
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", buildConfig()); // 4
+        return new CorsFilter(source);
     }
 }

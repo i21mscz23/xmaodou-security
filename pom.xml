@@ -7,7 +7,7 @@
     <groupId>com.github.i21mscz23</groupId>
     <artifactId>xmaodou-security</artifactId>
     <packaging>pom</packaging>
-    <version>${revision}</version>
+    <version>1.0.4-RELEASE</version>
     <url>https://github.com/i21mscz23/xmaodou-security</url>
     <description>security</description>
     <name>security</name>
@@ -16,7 +16,7 @@
     </modules>
 
     <properties>
-        <revision>1.0.2-RELEASE</revision>
+        <revision>1.0.4-RELEASE</revision>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -29,7 +29,7 @@
         <connection>scm:https://github.com/i21mscz23/xmaodou-security</connection>
         <developerConnection>scm:https://github.com/i21mscz23/xmaodou-security</developerConnection>
         <url>https://github.com/i21mscz23/xmaodou-security</url>
-        <tag>${revision}</tag>
+        <tag>1.0.4-RELEASE</tag>
     </scm>
 
     <dependencies>

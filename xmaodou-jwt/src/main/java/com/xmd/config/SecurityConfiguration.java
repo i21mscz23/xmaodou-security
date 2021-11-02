@@ -7,7 +7,6 @@ import com.xmd.authentication.JwtAuthenticationSecurityConfig;
 import com.xmd.properties.JwtProperties;
 import com.xmd.user.SecurityConst;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -58,7 +57,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         whiteList.add(SecurityConst.LOGIN_URL);
         String[] whiteArray = whiteList.toArray(new String[]{});
 
-        http.formLogin()
+        http
+            .formLogin()
                 //登陆地址
 //                .loginPage(SecurityConst.LOGIN_PAGE)
                 //结果处理器
@@ -83,7 +83,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //禁用session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-                .csrf().disable();
+                .cors().and().csrf().disable()
+               ;
 
 
     }
