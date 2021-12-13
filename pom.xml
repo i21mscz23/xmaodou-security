@@ -13,6 +13,8 @@
     <name>security</name>
     <modules>
         <module>xmaodou-jwt</module>
+        <module>xmaodou-social</module>
+        <module>xmaodou-server</module>
     </modules>
 
     <properties>

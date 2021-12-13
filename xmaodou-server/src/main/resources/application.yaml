@@ -1,0 +1,42 @@
+
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/templates/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://sh-cdb-c4fj2vrc.sql.tencentcdb.com:59446/security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
+    username: root
+    password: lx63024477
+  main:
+    allow-bean-definition-overriding: true
+
+#社交登陆配置
+com:
+  xmd:
+    jwt:
+      jwt-expiration: 28800
+      white-list:
+        - /login.html
+        - /qqLogin/**
+    social:
+      qq:
+        app-id: 100550231
+        appSecret: 69b6ab57b22f3c2fe6a6149274e3295e
+        provider-id: callback.do
+      github:
+        app-id: Iv1.9a1d0cbafea21da5
+        secret: ce2ff0d7357e60cb05f4479b2591ba96b36bf038
+        provider-id: github
+      weixin:
+        app-id: wxd99431bbff8305a0
+        app-secret: 60f78681d063590a469f1b297feff3c4
+        provider-id: weixin
+#      filter-processes-url: /social
+      filter-processes-url: /qqLogin
+
+
+server:
+#  port: 9999
+  port: 80

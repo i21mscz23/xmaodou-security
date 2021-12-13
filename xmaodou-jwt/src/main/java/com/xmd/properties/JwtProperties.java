@@ -2,6 +2,7 @@ package com.xmd.properties;
 
 import com.xmd.user.SecurityConst;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date 2021/5/31 下午5:18
  */
 @ConfigurationProperties(prefix = "com.xmd.jwt")
+@Primary
 public class JwtProperties {
 
 

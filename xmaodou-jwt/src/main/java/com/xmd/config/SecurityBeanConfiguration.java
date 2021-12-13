@@ -1,6 +1,5 @@
 package com.xmd.config;
 
-import com.xmd.annotation.EnableSecurityJwt;
 import com.xmd.authority.AccessDecisionService;
 import com.xmd.authority.PermissionService;
 import com.xmd.handler.intercept.UserAccessDeniedHandler;
@@ -11,11 +10,9 @@ import com.xmd.handler.login.LoginSuccessHandler;
 import com.xmd.service.SecurityService;
 import com.xmd.service.impl.DefaultSecurityService;
 import com.xmd.user.JdbcDetailsService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -122,4 +119,6 @@ public class SecurityBeanConfiguration {
         source.registerCorsConfiguration("/**", buildConfig()); // 4
         return new CorsFilter(source);
     }
+
+
 }

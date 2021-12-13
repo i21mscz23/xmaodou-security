@@ -15,6 +15,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import java.util.List;
 
@@ -38,6 +39,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
 
     @Autowired
+    private SpringSocialConfigurer socialSecurityConfig;
+
+    @Autowired
     private AuthenticationEntryPoint userAuthenticationEntryPoint;
 
     @Autowired
@@ -56,6 +60,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         }
         whiteList.add(SecurityConst.LOGIN_URL);
         String[] whiteArray = whiteList.toArray(new String[]{});
+
+        //配置社交登陆
+        if(socialSecurityConfig != null){
+            http.apply(socialSecurityConfig);
+        }
 
         http
             .formLogin()
@@ -83,7 +92,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //禁用session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-                .cors().and().csrf().disable()
+                .cors()
+            .and()
+                .csrf().disable()
                ;
 
 
