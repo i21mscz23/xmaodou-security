@@ -1,11 +1,9 @@
 package com.xmd.authentication;
 
-import com.xmd.annotation.EnableSecurityJwt;
 import com.xmd.filter.AuthenticationFilter;
 import com.xmd.handler.jwt.JwtHandler;
 import com.xmd.properties.JwtProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

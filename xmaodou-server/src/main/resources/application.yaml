@@ -12,14 +12,16 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-#社交登陆配置
+
 com:
   xmd:
+#   #jwt认证信息
     jwt:
       jwt-expiration: 28800
       white-list:
         - /login.html
         - /qqLogin/**
+#    #社交登陆配置
     social:
       qq:
         app-id: 100550231

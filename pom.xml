@@ -15,6 +15,7 @@
         <module>xmaodou-jwt</module>
         <module>xmaodou-social</module>
         <module>xmaodou-server</module>
+        <module>xmaodou-oauth2</module>
     </modules>
 
     <properties>
@@ -52,6 +53,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2020.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

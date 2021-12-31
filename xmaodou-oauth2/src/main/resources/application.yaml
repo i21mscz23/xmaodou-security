@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://sh-cdb-c4fj2vrc.sql.tencentcdb.com:59446/security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
+    username: root
+    password: lx63024477
