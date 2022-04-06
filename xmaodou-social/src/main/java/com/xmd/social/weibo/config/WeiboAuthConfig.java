@@ -1,8 +1,10 @@
-package com.xmd.social.wechat.config;
+package com.xmd.social.weibo.config;
 
 import com.xmd.properties.SecuritySocialProperties;
+import com.xmd.properties.WeiboConfig;
 import com.xmd.properties.WeixinConfig;
 import com.xmd.social.wechat.connect.WeixinConnectionFactory;
+import com.xmd.social.weibo.connect.WeiboConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +16,12 @@ import org.springframework.social.connect.ConnectionFactory;
 /**
  * @Description
  * @Author lixiao
- * @Date 2021/12/13 下午4:49
+ * @Date 2022/1/26 下午4:41
  */
 @Configuration
-@ConditionalOnProperty(prefix = "com.xmd.social.weixin", name = "app-id")
-public class WeixinAuthConfig extends SocialConfigurerAdapter {
+@ConditionalOnProperty(prefix = "com.xmd.social.weibo", name = "app-id")
+public class WeiboAuthConfig extends SocialConfigurerAdapter {
+
 
     @Autowired
     private SecuritySocialProperties securitySocialProperties;
@@ -32,11 +35,9 @@ public class WeixinAuthConfig extends SocialConfigurerAdapter {
 
     protected ConnectionFactory<?> createConnectionFactory() {
         /**
-         * providerId 为过滤地址的后面部分（/qqLogin/callback.do）
+         * providerId 为过滤地址的后面部分（/qqLogin/weibo）
          */
-        WeixinConfig weixin = securitySocialProperties.getWeixin();
-        return new WeixinConnectionFactory(weixin.getProviderId(), weixin.getAppId(), weixin.getAppSecret());
+        WeiboConfig weixin = securitySocialProperties.getWeibo();
+        return new WeiboConnectionFactory(weixin.getProviderId(), weixin.getAppId(), weixin.getAppSecret());
     }
-
-
 }

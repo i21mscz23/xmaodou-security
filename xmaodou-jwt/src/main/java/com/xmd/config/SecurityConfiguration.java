@@ -2,7 +2,6 @@ package com.xmd.config;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.google.common.collect.Lists;
-import com.xmd.annotation.EnableSecurityJwt;
 import com.xmd.authentication.JwtAuthenticationSecurityConfig;
 import com.xmd.properties.JwtProperties;
 import com.xmd.user.SecurityConst;
@@ -38,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
 
-    @Autowired
+    @Autowired(required = false)
     private SpringSocialConfigurer socialSecurityConfig;
 
     @Autowired

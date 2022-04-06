@@ -5,6 +5,7 @@ import com.xmd.properties.SecuritySocialProperties;
 import com.xmd.social.config.CurrentUserHolder;
 import com.xmd.social.qq.connect.QQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.social.UserIdSource;
@@ -18,6 +19,7 @@ import org.springframework.social.connect.ConnectionFactory;
  * @Date 2021/11/5 上午9:56
  */
 @Configuration
+@ConditionalOnProperty(prefix = "com.xmd.social.qq", name = "app-id")
 public class QQAutoConfig extends SocialConfigurerAdapter {
 
     @Autowired

@@ -37,6 +37,7 @@ public class SecurityBeanConfiguration {
      * @return
      */
     @Bean
+    @ConditionalOnMissingBean(PasswordEncoder.class)
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

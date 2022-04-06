@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SocialAuthenticationSecurityApplyConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
-    @Autowired
+    @Autowired(required = false)
     private SpringSocialConfigurer socialSecurityConfig;
 
     @Override

@@ -1,6 +1,7 @@
 package com.xmd.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xmd.service.SocialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -24,15 +25,20 @@ public class SocialAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private SocialService socialService;
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         if(exception instanceof SocialAuthenticationRedirectException){
             String redirectUrl = ((SocialAuthenticationRedirectException) exception).getRedirectUrl();
             response.sendRedirect(redirectUrl);
         }else {
+            Object result = socialService.onAuthenticationFailure(exception);
+
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(objectMapper.writeValueAsString("social 失败!"));
+            response.getWriter().write(objectMapper.writeValueAsString(result));
         }
     }
 }

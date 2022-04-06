@@ -17,6 +17,11 @@ public abstract class SocialProperties {
      */
     private String appSecret;
 
+    /**
+     * 应用编号
+     */
+    private String providerId;
+
     public String getAppId() {
         return this.appId;
     }
@@ -31,5 +36,13 @@ public abstract class SocialProperties {
 
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }

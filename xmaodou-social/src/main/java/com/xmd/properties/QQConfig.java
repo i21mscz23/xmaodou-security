@@ -8,14 +8,5 @@ package com.xmd.properties;
 public class QQConfig extends SocialProperties{
 
 
-    private String providerId;
 
-
-    public String getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
-    }
 }

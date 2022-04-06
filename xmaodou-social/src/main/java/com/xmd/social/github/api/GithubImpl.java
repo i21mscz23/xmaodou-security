@@ -33,7 +33,7 @@ public class GithubImpl extends AbstractOAuth2ApiBinding implements Github{
         RestTemplate restTemplate = getRestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "bearer " + this.accessToken);
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> exchange = restTemplate.exchange(URL_GET_USERINFO, HttpMethod.GET, entity, String.class);
         String body = exchange.getBody();
 

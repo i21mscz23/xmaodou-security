@@ -2,8 +2,13 @@ package com.xmd.config;
 
 import com.xmd.processor.SocialAuthenticationFilterPostProcessor;
 import com.xmd.properties.SecuritySocialProperties;
+import com.xmd.service.SocialService;
+import com.xmd.service.impl.DefaultSocialService;
 import com.xmd.social.config.CustomSocialConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +21,7 @@ import org.springframework.social.security.SpringSocialConfigurer;
  * @Date 2021/11/17 下午1:59
  */
 @Configuration
+@EnableConfigurationProperties({SecuritySocialProperties.class})
 public class SpringSocialBeanConfiguration {
 
     @Autowired
@@ -29,6 +35,7 @@ public class SpringSocialBeanConfiguration {
      * @return
      */
     @Bean
+    @ConditionalOnProperty(prefix = "com.xmd.social", name = "enable",havingValue = "true")
     public SpringSocialConfigurer socialSecurityConfig() {
         /**
          * 修改社交登陆过滤地址（前缀，默认为 /auth）
@@ -41,7 +48,18 @@ public class SpringSocialBeanConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean(PasswordEncoder.class)
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+
+    @Bean
+    @ConditionalOnMissingBean(SocialService.class)
+    public SocialService defaultSocialService(){
+        return new DefaultSocialService();
+    }
+
+
 }

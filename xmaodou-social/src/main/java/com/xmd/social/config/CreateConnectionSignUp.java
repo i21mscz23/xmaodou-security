@@ -17,4 +17,6 @@ public class CreateConnectionSignUp implements ConnectionSignUp {
         //通过第三方返回的信息作存储为用户信息（userconnection中的userId）
         return connection.getKey().getProviderUserId();
     }
+
+
 }

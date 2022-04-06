@@ -21,21 +21,29 @@ com:
       white-list:
         - /login.html
         - /qqLogin/**
+        - /connect
+        - /connect/callback.do
 #    #社交登陆配置
     social:
+      #是否启动社交登陆
+      enable: true
       qq:
         app-id: 100550231
-        appSecret: 69b6ab57b22f3c2fe6a6149274e3295e
+        app-secret: 69b6ab57b22f3c2fe6a6149274e3295e
         provider-id: callback.do
       github:
         app-id: Iv1.9a1d0cbafea21da5
-        secret: ce2ff0d7357e60cb05f4479b2591ba96b36bf038
+        app-secret: ce2ff0d7357e60cb05f4479b2591ba96b36bf038
         provider-id: github
+      weibo:
+        app-id: 3400992735
+        app-secret: e931751d76f485d4ae05a50fb269a251
+        provider-id: weibo
       weixin:
         app-id: wxd99431bbff8305a0
         app-secret: 60f78681d063590a469f1b297feff3c4
         provider-id: weixin
-#      filter-processes-url: /social
+#      #filter-processes-url: /social
       filter-processes-url: /qqLogin
 
 

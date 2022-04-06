@@ -1,8 +1,13 @@
 package com.xmd.social.github.config;
 
+import com.xmd.properties.GithubConfig;
+import com.xmd.properties.SecuritySocialProperties;
+import com.xmd.properties.SocialProperties;
 import com.xmd.social.config.CurrentUserHolder;
 import com.xmd.social.github.connect.GithubConnectionFactory;
 import com.xmd.social.qq.connect.QQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.social.UserIdSource;
@@ -16,7 +21,11 @@ import org.springframework.social.connect.ConnectionFactory;
  * @Date 2021/12/13 上午10:08
  */
 @Configuration
+@ConditionalOnProperty(prefix = "com.xmd.social.github", name = "app-id")
 public class GithubAutoConfig extends SocialConfigurerAdapter {
+
+    @Autowired
+    private SecuritySocialProperties securitySocialProperties;
 
     @Override
     public UserIdSource getUserIdSource() {
@@ -33,6 +42,7 @@ public class GithubAutoConfig extends SocialConfigurerAdapter {
         /**
          * providerId 为过滤地址的后面部分（/qqLogin/callback.do）
          */
-        return new GithubConnectionFactory("github", "Iv1.9a1d0cbafea21da5", "ce2ff0d7357e60cb05f4479b2591ba96b36bf038");
+        GithubConfig github = securitySocialProperties.getGithub();
+        return new GithubConnectionFactory(github.getProviderId(), github.getAppId(), github.getAppSecret());
     }
 }

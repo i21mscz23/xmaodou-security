@@ -1,6 +1,5 @@
 package com.xmd.properties;
 
-import com.xmd.social.wechat.api.Weixin;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -31,6 +30,12 @@ public class SecuritySocialProperties {
      * 微信配置
      */
     private WeixinConfig weixin;
+
+    /**
+     * 微博配置
+     */
+    private WeiboConfig weibo;
+
 
 
     public String getFilterProcessesUrl() {
@@ -63,5 +68,13 @@ public class SecuritySocialProperties {
 
     public void setWeixin(WeixinConfig weixin) {
         this.weixin = weixin;
+    }
+
+    public WeiboConfig getWeibo() {
+        return weibo;
+    }
+
+    public void setWeibo(WeiboConfig weibo) {
+        this.weibo = weibo;
     }
 }

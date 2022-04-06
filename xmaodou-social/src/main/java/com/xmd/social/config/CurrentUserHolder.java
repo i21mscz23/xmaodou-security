@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.UserIdSource;
 
 /**
- * @Description
+ * @Description 从SecurityContextHolder 获取对应的 用户编号（userId）供社交登陆中的Connect使用
  * @Author lixiao
  * @Date 2020/5/23 16:27
  */

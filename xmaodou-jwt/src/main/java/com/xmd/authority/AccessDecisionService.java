@@ -4,7 +4,6 @@ import com.xmd.service.SecurityService;
 import com.xmd.user.JwtUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
  * @Author lixiao
  * @Date 2020/5/18 13:14
  */
-//@Component("permissionService")
 public class AccessDecisionService implements PermissionService{
 
     @Autowired
