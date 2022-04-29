@@ -29,7 +29,7 @@ public class UserAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-//        httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         Object result = securityService.anonymityDenied(e);
         httpServletResponse.getWriter().write(objectMapper.writeValueAsString(result));
     }

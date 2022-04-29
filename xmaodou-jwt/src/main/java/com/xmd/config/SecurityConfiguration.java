@@ -9,6 +9,7 @@ import com.xmd.user.SecurityConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -38,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
 
-    @Autowired
+    @Autowired(required = false)
     private SpringSocialConfigurer socialSecurityConfig;
 
     @Autowired
@@ -50,6 +51,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtProperties jwtProperties;
 
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        //所需要用到的静态资源，允许访问
+        web.ignoring().antMatchers( "/swagger-ui.html",
+                "/swagger-ui/*",
+                "/swagger-resources/**",
+                "/v2/api-docs",
+                "/v3/api-docs",
+                "/webjars/**");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

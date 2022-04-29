@@ -154,11 +154,11 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>xmaodou-security-release</id>
+            <id>xmaodou-snapshot</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>xmaodou-security-snapshot</id>
+            <id>xmaodou-release</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
