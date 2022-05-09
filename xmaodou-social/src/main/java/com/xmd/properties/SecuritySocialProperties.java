@@ -1,6 +1,5 @@
 package com.xmd.properties;
 
-import com.xmd.social.wechat.api.Weixin;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

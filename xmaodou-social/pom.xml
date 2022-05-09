@@ -5,11 +5,20 @@
     <parent>
         <artifactId>xmaodou-security</artifactId>
         <groupId>com.github.i21mscz23</groupId>
-        <version>1.0.4-RELEASE</version>
+        <version>1.0.5-RELEASE</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
+    <name>xmaodou-social</name>
     <artifactId>xmaodou-social</artifactId>
+    <url>https://github.com/i21mscz23/xmaodou-security</url>
+    <description>jwt</description>
+    <version>1.0.5-RELEASE</version>
+
+
+    <properties>
+        <spring-social.version>1.1.6.RELEASE</spring-social.version>
+    </properties>
 
 
     <dependencies>
@@ -30,22 +39,22 @@
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-config</artifactId>
-            <version>1.1.6.RELEASE</version>
+            <version>${spring-social.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-core</artifactId>
-            <version>1.1.6.RELEASE</version>
+            <version>${spring-social.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-security</artifactId>
-            <version>1.1.6.RELEASE</version>
+            <version>${spring-social.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-web</artifactId>
-            <version>1.1.6.RELEASE</version>
+            <version>${spring-social.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
