@@ -1,5 +1,6 @@
 package com.xmd.service;
 
+import com.xmd.authentication.JwtAuthenticationToken;
 import com.xmd.user.JwtUserDetails;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,14 @@ public interface SecurityService {
      * @return
      */
     JwtUserDetails check(String username);
+
+    /**
+     * 验证token
+     * @param token
+     * @param sign
+     * @return
+     */
+    JwtAuthenticationToken checkToke(String token, String sign);
 
     /**
      * 登陆成功后封装返回信息

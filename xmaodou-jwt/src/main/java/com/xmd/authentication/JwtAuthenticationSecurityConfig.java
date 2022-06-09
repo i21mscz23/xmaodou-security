@@ -3,6 +3,7 @@ package com.xmd.authentication;
 import com.xmd.filter.AuthenticationFilter;
 import com.xmd.handler.jwt.JwtHandler;
 import com.xmd.properties.JwtProperties;
+import com.xmd.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -36,10 +37,10 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private JwtHandler jwtHandler;
+    private JwtProperties jwtProperties;
 
     @Autowired
-    private JwtProperties jwtProperties;
+    private SecurityService securityService;
 
 
 
@@ -57,7 +58,7 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
 
         //jwt验证过滤器
         String jwtSecret = jwtProperties.getJwtSecret();
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter(jwtHandler,jwtSecret);
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(securityService,jwtSecret);
 
         builder.authenticationProvider(jwtAuthenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

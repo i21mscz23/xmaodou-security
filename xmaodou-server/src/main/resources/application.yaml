@@ -17,6 +17,7 @@ com:
   xmd:
 #   #jwt认证信息
     jwt:
+      login-url: /login
       jwt-expiration: 28800
       white-list:
         - /login.html
@@ -42,3 +43,5 @@ com:
 server:
 #  port: 9999
   port: 80
+#  servlet:
+#    context-path: /api/co/

@@ -2,20 +2,28 @@ package com.xmd.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Maps;
+import com.xmd.authentication.JwtAuthenticationToken;
 import com.xmd.handler.jwt.JwtHandler;
 import com.xmd.properties.JwtProperties;
 import com.xmd.response.ServerResponse;
 import com.xmd.service.SecurityService;
 import com.xmd.user.JwtUserDetails;
 import com.xmd.user.SecurityConst;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +45,24 @@ public class DefaultSecurityService implements SecurityService {
         //默认登陆，账号随意，密码123908
         return new JwtUserDetails(username,"$2a$10$49CiAqKl.7DcuCViWCjNO.qCcPgui6eycalYkXtjQHNR0B7zdlXkK",
                 jwtProperties.getJwtExpiration(), AuthorityUtils.createAuthorityList("ROLE_ADMIN"),null);
+    }
+
+    @Override
+    public JwtAuthenticationToken checkToke(String token, String sign) {
+        HttpServletRequest httpServletRequest = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
+
+
+        LocalDateTime expiresTime = jwtHandler.expiresTime(token, sign);
+        if(expiresTime == null || LocalDateTime.now().isAfter(expiresTime)){
+            throw new BadCredentialsException("token无效");
+        }
+
+        JwtUserDetails jwtUserDetails = jwtHandler.userDetails(token, sign);
+
+        JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(jwtUserDetails,"", Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+        jwtAuthenticationToken.setDetails(new WebAuthenticationDetails(httpServletRequest));
+
+        return jwtAuthenticationToken;
     }
 
     @Override
