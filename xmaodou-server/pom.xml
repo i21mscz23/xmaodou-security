@@ -5,7 +5,7 @@
     <parent>
         <artifactId>xmaodou-security</artifactId>
         <groupId>com.github.i21mscz23</groupId>
-        <version>1.0.5-RELEASE</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -25,13 +25,11 @@
         <dependency>
             <groupId>com.github.i21mscz23</groupId>
             <artifactId>xmaodou-jwt</artifactId>
-            <version>1.0.4-RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.6.0</version>
         </dependency>
     </dependencies>
 

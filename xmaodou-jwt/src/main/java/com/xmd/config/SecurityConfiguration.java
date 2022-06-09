@@ -70,7 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         if(CollectionUtil.isEmpty(whiteList)){
             whiteList = Lists.newArrayList();
         }
-        whiteList.add(SecurityConst.LOGIN_URL);
+        whiteList.add(jwtProperties.getLoginUrl());
         String[] whiteArray = whiteList.toArray(new String[]{});
 
         //配置社交登陆

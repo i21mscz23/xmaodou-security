@@ -7,7 +7,7 @@
     <groupId>com.github.i21mscz23</groupId>
     <artifactId>xmaodou-security</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.5-RELEASE</version>
+    <version>${revision}</version>
     <url>https://github.com/i21mscz23/xmaodou-security</url>
     <description>security</description>
     <name>security</name>
@@ -19,12 +19,14 @@
     </modules>
 
     <properties>
-        <revision>1.0.4-RELEASE</revision>
+        <revision>1.0.5-RELEASE</revision>
 
         <i21mscz23.support-tools.version>1.0.8-RELEASE</i21mscz23.support-tools.version>
         <i21mscz23.security-social.version>1.0.5-RELEASE</i21mscz23.security-social.version>
+        <i21mscz23.security-jwt.version>1.0.5-RELEASE</i21mscz23.security-jwt.version>
 
         <java-jwt.version>3.19.2</java-jwt.version>
+        <json-path.version>2.6.0</json-path.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -37,7 +39,7 @@
         <connection>scm:https://github.com/i21mscz23/xmaodou-security</connection>
         <developerConnection>scm:https://github.com/i21mscz23/xmaodou-security</developerConnection>
         <url>https://github.com/i21mscz23/xmaodou-security</url>
-        <tag>1.0.4-RELEASE</tag>
+        <tag>1.0.5-RELEASE</tag>
     </scm>
 
     <dependencies>
@@ -74,6 +76,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${json-path.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.github.i21mscz23</groupId>
                 <artifactId>support-tools</artifactId>
                 <version>${i21mscz23.support-tools.version}</version>
@@ -84,6 +92,14 @@
                 <artifactId>xmaodou-social</artifactId>
                 <version>${i21mscz23.security-social.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.i21mscz23</groupId>
+                <artifactId>xmaodou-jwt</artifactId>
+                <version>${i21mscz23.security-jwt.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>

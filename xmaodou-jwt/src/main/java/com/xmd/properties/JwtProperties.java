@@ -16,6 +16,7 @@ import java.util.List;
 public class JwtProperties {
 
 
+
     /**
      * 登陆地址
      */

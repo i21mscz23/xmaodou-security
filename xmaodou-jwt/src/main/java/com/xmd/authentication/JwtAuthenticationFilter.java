@@ -22,8 +22,8 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     private String passwordParameter = "password";
     private boolean postOnly = true;
 
-    public JwtAuthenticationFilter() {
-        super(new AntPathRequestMatcher(SecurityConst.LOGIN_URL, "POST"));
+    public JwtAuthenticationFilter(String loginUrl) {
+        super(new AntPathRequestMatcher(loginUrl, "POST"));
     }
 
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
