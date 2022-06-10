@@ -2,10 +2,8 @@ package com.xmd.config;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.google.common.collect.Lists;
-import com.xmd.annotation.EnableSecurityJwt;
 import com.xmd.authentication.JwtAuthenticationSecurityConfig;
 import com.xmd.properties.JwtProperties;
-import com.xmd.user.SecurityConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

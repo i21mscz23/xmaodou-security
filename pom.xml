@@ -7,7 +7,7 @@
     <groupId>com.github.i21mscz23</groupId>
     <artifactId>xmaodou-security</artifactId>
     <packaging>pom</packaging>
-    <version>${revision}</version>
+    <version>1.0.6-RELEASE</version>
     <url>https://github.com/i21mscz23/xmaodou-security</url>
     <description>security</description>
     <name>security</name>
@@ -19,11 +19,11 @@
     </modules>
 
     <properties>
-        <revision>1.0.5-RELEASE</revision>
+        <revision>1.0.6-RELEASE</revision>
 
         <i21mscz23.support-tools.version>1.0.8-RELEASE</i21mscz23.support-tools.version>
         <i21mscz23.security-social.version>1.0.5-RELEASE</i21mscz23.security-social.version>
-        <i21mscz23.security-jwt.version>1.0.5-RELEASE</i21mscz23.security-jwt.version>
+        <i21mscz23.security-jwt.version>1.0.6-RELEASE</i21mscz23.security-jwt.version>
 
         <java-jwt.version>3.19.2</java-jwt.version>
         <json-path.version>2.6.0</json-path.version>

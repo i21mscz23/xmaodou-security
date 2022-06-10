@@ -33,7 +33,7 @@ public class JwtUserDetails implements UserDetails {
     /**
      * 是否为admin
      */
-    private boolean isAdmin;
+    private boolean admin;
 
 
 
@@ -109,11 +109,11 @@ public class JwtUserDetails implements UserDetails {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public String getUserId() {

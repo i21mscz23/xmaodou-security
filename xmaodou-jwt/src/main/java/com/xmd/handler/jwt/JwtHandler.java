@@ -108,15 +108,15 @@ public class JwtHandler {
                 userId = claims.get("userId").asString();
             }
             Claim authoritiesClaim = claims.get("authorities");
-            String[] authorities = new String[]{"ROLE_ADMIN"};
+            String[] authorities = new String[]{"ROLE_ANONYMITY"};
             if(authoritiesClaim != null && authoritiesClaim.asString() != null){
                 authorities = authoritiesClaim.asString().split(",");
             }
 
 
+            userDetails = new JwtUserDetails(username,null,claims.get("expirationTime").asLong(), AuthorityUtils.createAuthorityList(authorities),userId);
+            userDetails.setAdmin(claims.get("admin").asBoolean());
 
-            userDetails = new JwtUserDetails(username,null,null, AuthorityUtils.createAuthorityList(authorities),userId);
-            userDetails.setAdmin(claims.get("isAdmin").asBoolean());
         }
 
         return userDetails;
