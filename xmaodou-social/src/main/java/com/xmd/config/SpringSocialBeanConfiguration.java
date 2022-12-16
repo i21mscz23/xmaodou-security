@@ -44,4 +44,9 @@ public class SpringSocialBeanConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    public static void main(String[] args) {
+        String encode = new BCryptPasswordEncoder().encode("k4q#H5D#V4oC%z");
+        System.out.println(encode);
+    }
 }

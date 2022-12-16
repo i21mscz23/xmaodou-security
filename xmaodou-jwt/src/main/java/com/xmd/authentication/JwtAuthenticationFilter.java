@@ -1,6 +1,6 @@
 package com.xmd.authentication;
 
-import com.xmd.user.SecurityConst;
+
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

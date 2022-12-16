@@ -32,6 +32,8 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class SecurityBeanConfiguration {
 
+
+
     /**
      * 密码加密工具
      * @return

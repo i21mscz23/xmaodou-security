@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>登录页</h1>
@@ -16,5 +18,31 @@
     <!--    <a href="http://github.com/login/oauth/authorize?client_id=Iv1.9a1d0cbafea21da5&redirect_uri=http://127.0.0.1:9999/social/github&scope=user&state=1">github</a>-->
     <a href="http://www.pinzhi365.com/qqLogin/github">github</a>
 </div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#bt").click(
+            function () {
+                var encrypt = new JSEncrypt();
+                encrypt.setPublicKey($("#publickey").val());
+                alert(encrypt.encrypt("123908"));
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/rsaTest",
+                //     data: "{\"requestData\":" + encrypt.encrypt(JSON.stringify({name: "好看"})) + "}",
+                //     dataType: 'json',
+                //     contentType: "application/json",
+                //     success: function (result) {
+                //         alert("解密的名称：" + uncrypted);
+                //     }
+                // });
+            });
+    });
+</script>
+    <h2>公钥：</h2>
+    <textarea id="publickey" rows="5" cols="45">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCCxAla/lvxNMgOQ+Zfgl+nEBi+nlUZK/zdsZmDZcapzyhBlH+yEMXGxqij6H8FjItGEhYKRf5ZW7OlrBc1BSChPxkplda/lkRSnbwtEENvA8+K6fu87geMSBGNjigjHjEqzT5coFPLaDCMpvvvOmL7nPzzmm9L/QyIY9Y+kYlpmQIDAQAB</textarea>
+    <input type="button" id="bt" value="提交"/>
+    </body>
 </body>
 </html>

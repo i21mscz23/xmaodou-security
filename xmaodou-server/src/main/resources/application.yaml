@@ -6,7 +6,7 @@ spring:
       static-locations: classpath:/templates/
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sh-cdb-c4fj2vrc.sql.tencentcdb.com:59446/security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
+    url: jdbc:mysql://124.71.136.187:13316/security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
     username: root
     password: lx63024477
   main:

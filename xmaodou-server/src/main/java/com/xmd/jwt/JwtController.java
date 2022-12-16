@@ -1,5 +1,6 @@
 package com.xmd.jwt;
 
+import com.xmd.annotation.AnonymousAccess;
 import com.xmd.response.ServerResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,4 +18,11 @@ public class JwtController {
     public ServerResponse jwt(){
         return ServerResponse.createBySuccessData("jwt");
     }
+
+    @GetMapping("/annotation")
+    @AnonymousAccess
+    public ServerResponse annotation(){
+        return ServerResponse.createBySuccess();
+    }
+
 }
