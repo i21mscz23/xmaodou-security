@@ -20,7 +20,8 @@ com:
       login-url: /login
       jwt-expiration: 28800
       white-list:
-        - /login.html
+        - /index.html
+        - /binding.html
         - /qqLogin/**
 #    #社交登陆配置
     social:
@@ -38,6 +39,7 @@ com:
         provider-id: weixin
 #      filter-processes-url: /social
       filter-processes-url: /qqLogin
+      redirect-uri: 'http://www.pinzhi365.com/qqLogin'
 
 
 server:

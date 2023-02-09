@@ -33,7 +33,7 @@ public class GithubOAuth2Template extends OAuth2Template {
         String[] items = StringUtils.splitByWholeSeparatorPreserveAllTokens(responseStr, "&");
 
         String accessToken = StringUtils.substringAfterLast(items[0], "=");
-        Long expiresIn = new Long(StringUtils.substringAfterLast(items[1], "="));
+        Long expiresIn = Long.valueOf(StringUtils.substringAfterLast(items[1], "="));
         String refreshToken = StringUtils.substringAfterLast(items[2], "=");
 
 

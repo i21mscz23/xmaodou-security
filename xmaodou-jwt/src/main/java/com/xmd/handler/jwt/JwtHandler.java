@@ -54,7 +54,7 @@ public class JwtHandler {
         // 带入密钥解密
         JWTVerifier require = JWT.require(Algorithm.HMAC256(sign)).build();
         try {
-            DecodedJWT verify = require.verify(jwt);
+            require.verify(jwt);
         }catch (Exception e){
             logger.error("token校验失败，jwt:{}",jwt);
             return false;

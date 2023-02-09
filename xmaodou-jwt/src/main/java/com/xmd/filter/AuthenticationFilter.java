@@ -34,13 +34,17 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String token = httpServletRequest.getHeader("Authorization");
+        if(StringUtils.isBlank(token)){
+            token = httpServletRequest.getParameter("Authorization");
+        }
+
         if (StringUtils.isBlank(token)){
             //其他过滤器判断请求是否合法
             filterChain.doFilter(httpServletRequest,httpServletResponse);
             return;
         }
 
-        if(!StringUtils.startsWith(token,SecurityConst.TOKEN_TYPE)){
+        if(!StringUtils.startsWithIgnoreCase(token,SecurityConst.TOKEN_TYPE)){
             throw new BadCredentialsException("token格式错误");
         }
 

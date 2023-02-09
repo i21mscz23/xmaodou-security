@@ -39,6 +39,6 @@ public class QQAutoConfig extends SocialConfigurerAdapter {
          * providerId 为过滤地址的后面部分（/qqLogin/callback.do）
          */
         QQConfig qq = securitySocialProperties.getQq();
-        return new QQConnectionFactory(qq.getProviderId(), qq.getAppId(), qq.getAppSecret());
+        return new QQConnectionFactory(qq.getProviderId(), qq.getAppId(), qq.getAppSecret(),securitySocialProperties.getRedirectUri());
     }
 }

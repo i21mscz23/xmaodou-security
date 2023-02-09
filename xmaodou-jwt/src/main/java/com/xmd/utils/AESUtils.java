@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 public class AESUtils {
 
     // 加密
-    public static String Encrypt(String sSrc, String sKey) throws Exception {
+    public static String encrypt(String sSrc, String sKey) throws Exception {
         if (sKey == null) {
             System.out.print("Key为空null");
             return null;
@@ -29,7 +29,7 @@ public class AESUtils {
     }
 
     // 解密
-    public static String Decrypt(String sSrc, String sKey) throws Exception {
+    public static String decrypt(String sSrc, String sKey) throws Exception {
         try {
             // 判断Key是否正确
             if (sKey == null) {

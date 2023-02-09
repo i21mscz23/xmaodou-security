@@ -17,6 +17,11 @@ public class SecuritySocialProperties {
     private String filterProcessesUrl = "/auth";
 
     /**
+     * fu
+     */
+    private String redirectUri;
+
+    /**
      * qq配置
      */
     private QQConfig qq;
@@ -62,5 +67,13 @@ public class SecuritySocialProperties {
 
     public void setWeixin(WeixinConfig weixin) {
         this.weixin = weixin;
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
     }
 }

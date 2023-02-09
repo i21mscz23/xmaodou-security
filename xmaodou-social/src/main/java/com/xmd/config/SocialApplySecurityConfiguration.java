@@ -21,7 +21,7 @@ public class SocialApplySecurityConfiguration extends WebSecurityConfigurerAdapt
     protected void configure(HttpSecurity http) throws Exception {
 
         http.apply(socialSecurityConfig).and().authorizeRequests().antMatchers(
-                "/social/**","/qqLogin/callback.do","/login.html"
+                "/social/**","/qqLogin/callback.do","/login.html","binding.html"
         )
                 .permitAll().anyRequest().authenticated()
                 .and()

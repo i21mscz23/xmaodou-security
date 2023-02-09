@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.security.SpringSocialConfigurer;
 
 /**
@@ -45,8 +48,18 @@ public class SpringSocialBeanConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    public static void main(String[] args) {
-        String encode = new BCryptPasswordEncoder().encode("k4q#H5D#V4oC%z");
-        System.out.println(encode);
+    /**
+     * 社交登录接口
+     * @param connectionFactoryLocator
+     * @param connectionRepository
+     * @return
+     */
+    @Bean
+    public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator,
+                                               ConnectionRepository connectionRepository) {
+        return new ConnectController(connectionFactoryLocator, connectionRepository);
     }
+
+
+
 }

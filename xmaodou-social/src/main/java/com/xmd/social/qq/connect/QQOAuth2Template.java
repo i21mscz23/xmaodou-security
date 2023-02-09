@@ -16,23 +16,30 @@ import java.nio.charset.Charset;
  */
 public class QQOAuth2Template extends OAuth2Template {
 
+    private String redirectUri;
 
-    public QQOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl) {
+    public QQOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl,String redirectUri) {
         super(clientId, clientSecret, authorizeUrl, accessTokenUrl);
-
+        this.redirectUri = redirectUri;
         setUseParametersForClientAuthentication(true);
     }
 
 
     @Override
     protected AccessGrant postForAccessGrant(String accessTokenUrl, MultiValueMap<String, String> parameters) {
+        if(StringUtils.isNotBlank(redirectUri)){
+            parameters.remove("redirect_uri");
+            parameters.add("redirect_uri",redirectUri);
+        }
+
         String responseStr = getRestTemplate().postForObject(accessTokenUrl, parameters, String.class);
 
 
         String[] items = StringUtils.splitByWholeSeparatorPreserveAllTokens(responseStr, "&");
 
         String accessToken = StringUtils.substringAfterLast(items[0], "=");
-        Long expiresIn = new Long(StringUtils.substringAfterLast(items[1], "="));
+        Long expiresIn = Long.valueOf(StringUtils.substringAfterLast(items[1], "="));;
+
         String refreshToken = StringUtils.substringAfterLast(items[2], "=");
 
         return new AccessGrant(accessToken, null, refreshToken, expiresIn);
@@ -44,5 +51,13 @@ public class QQOAuth2Template extends OAuth2Template {
         RestTemplate restTemplate = super.createRestTemplate();
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
         return restTemplate;
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
     }
 }

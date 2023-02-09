@@ -333,7 +333,7 @@ public class RSAUtils {
      */
     public static String encryptedDataOnJava(String data, String PUBLICKEY) {
         try {
-            data = Base64.encodeBase64String(encryptByPublicKey(data.getBytes(), PUBLICKEY));
+            data = Base64.encodeBase64String(encryptByPublicKey(data.getBytes("UTF-8"), PUBLICKEY));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

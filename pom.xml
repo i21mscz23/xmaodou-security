@@ -15,7 +15,6 @@
         <module>xmaodou-jwt</module>
         <module>xmaodou-social</module>
         <module>xmaodou-server</module>
-        <module>xmaodou-oauth2</module>
     </modules>
 
     <properties>
