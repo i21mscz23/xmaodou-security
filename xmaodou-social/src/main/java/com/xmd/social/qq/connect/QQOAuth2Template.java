@@ -3,6 +3,7 @@ package com.xmd.social.qq.connect;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.social.oauth2.AccessGrant;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.social.oauth2.OAuth2Template;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -53,6 +54,16 @@ public class QQOAuth2Template extends OAuth2Template {
         return restTemplate;
     }
 
+
+    @Override
+    public String buildAuthorizeUrl(OAuth2Parameters parameters) {
+        if(StringUtils.isNotBlank(redirectUri)){
+            parameters.remove("redirect_uri");
+            parameters.setRedirectUri(redirectUri+ "/callback.do");
+        }
+        return buildAuthenticateUrl(parameters);
+    }
+
     public String getRedirectUri() {
         return redirectUri;
     }
@@ -60,4 +71,6 @@ public class QQOAuth2Template extends OAuth2Template {
     public void setRedirectUri(String redirectUri) {
         this.redirectUri = redirectUri;
     }
+
+
 }

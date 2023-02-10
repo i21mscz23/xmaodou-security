@@ -39,9 +39,6 @@ public class ConnectSupportPostProcessor implements BeanPostProcessor {
             list.add(urlConnectInterceptor);
 
             configurer.setConnectInterceptors(list);
-
-//            configurer.setApplicationUrl();
-//            configurer.signupUrl("/social/signUp");
             return configurer;
         }
         return bean;
