@@ -68,4 +68,11 @@ public interface SecurityService {
      * @return
      */
     boolean hasPermission(JwtUserDetails userDetails, HttpServletRequest request);
+
+    /**
+     * 密码加密
+     * @param password
+     * @return
+     */
+    String getPassword(String password);
 }

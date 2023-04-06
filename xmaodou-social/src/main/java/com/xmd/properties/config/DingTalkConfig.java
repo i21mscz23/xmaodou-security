@@ -1,17 +1,19 @@
-package com.xmd.properties;
+package com.xmd.properties.config;
 
 /**
  * @Description
  * @Author lixiao
- * @Date 2021/12/13 下午1:43
+ * @Date 2021/12/6 上午11:13
  */
-public class GithubConfig {
+public class DingTalkConfig {
 
     private String appId;
 
     private String appSecret;
 
-    private String providerId = "github";
+    private String providerId;
+
+    private String agentId;
 
     public String getAppId() {
         return appId;
@@ -35,5 +37,13 @@ public class GithubConfig {
 
     public void setProviderId(String providerId) {
         this.providerId = providerId;
+    }
+
+    public String getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(String agentId) {
+        this.agentId = agentId;
     }
 }

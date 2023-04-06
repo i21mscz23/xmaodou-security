@@ -1,8 +1,7 @@
 package com.xmd.social.wechat.config;
 
-import com.xmd.properties.QQConfig;
 import com.xmd.properties.SecuritySocialProperties;
-import com.xmd.properties.WeixinConfig;
+import com.xmd.properties.config.WeixinConfig;
 import com.xmd.social.wechat.connect.WeixinConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

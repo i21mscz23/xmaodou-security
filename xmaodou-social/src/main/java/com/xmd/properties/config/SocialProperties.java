@@ -1,4 +1,4 @@
-package com.xmd.properties;
+package com.xmd.properties.config;
 
 /**
  * @Description

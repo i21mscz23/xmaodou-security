@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -39,6 +40,9 @@ public class DefaultSecurityService implements SecurityService {
 
     @Autowired
     private JwtHandler jwtHandler;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public JwtUserDetails check(String username) {
@@ -103,5 +107,12 @@ public class DefaultSecurityService implements SecurityService {
     @Override
     public boolean hasPermission(JwtUserDetails userDetails, HttpServletRequest request) {
         return true;
+    }
+
+    @Override
+    public String getPassword(String password) {
+
+        String encode = passwordEncoder.encode(password);
+        return encode;
     }
 }

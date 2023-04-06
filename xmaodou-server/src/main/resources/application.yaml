@@ -15,6 +15,16 @@ spring:
 
 com:
   xmd:
+    web:
+      #
+      ignoring:
+        # swagger
+        - /swagger-ui.html
+        - /swagger-ui/*
+        - /swagger-resources/**
+        - /v2/api-docs
+        - /v3/api-docs
+        - /webjars/**
 #   #jwt认证信息
     jwt:
       login-url: /login
@@ -23,6 +33,9 @@ com:
         - /index.html
         - /binding.html
         - /qqLogin/**
+        # swagger
+        - /v3/api-docs/**
+        - /doc.html
 #    #社交登陆配置
     social:
       qq:
@@ -41,6 +54,10 @@ com:
       filter-processes-url: /qqLogin
       redirect-uri: 'http://www.pinzhi365.com/qqLogin'
 
+springdoc:
+  swagger-ui:
+    # 禁止默认路径
+    disable-swagger-default-url: true
 
 server:
   port: 9999

@@ -1,6 +1,6 @@
 package com.xmd.social.qq.config;
 
-import com.xmd.properties.QQConfig;
+import com.xmd.properties.config.QQConfig;
 import com.xmd.properties.SecuritySocialProperties;
 import com.xmd.social.config.CurrentUserHolder;
 import com.xmd.social.qq.connect.QQConnectionFactory;

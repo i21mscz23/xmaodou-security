@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.xmd.annotation.AnonymousAccess;
 import com.xmd.authentication.JwtAuthenticationSecurityConfig;
 import com.xmd.properties.JwtProperties;
+import com.xmd.properties.WebProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -60,16 +61,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private WebProperties webProperties;
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        //所需要用到的静态资源，允许访问
-        web.ignoring().antMatchers( "/swagger-ui.html",
-                "/swagger-ui/*",
-                "/swagger-resources/**",
-                "/v2/api-docs",
-                "/v3/api-docs",
-                "/webjars/**");
+        List<String> ignoring = webProperties.getIgnoring();
+        if(CollectionUtil.isNotEmpty(ignoring)){
+            //所需要用到的静态资源，允许访问(如swagger)
+            web.ignoring().antMatchers( ignoring.stream().toArray(String[]::new));
+        }
+
     }
 
     @Override

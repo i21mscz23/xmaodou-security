@@ -1,5 +1,8 @@
 package com.xmd.properties;
 
+import com.xmd.properties.config.GithubConfig;
+import com.xmd.properties.config.QQConfig;
+import com.xmd.properties.config.WeixinConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
