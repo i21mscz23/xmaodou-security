@@ -1,18 +1,18 @@
-
-
 spring:
+  application:
+    name: security-server
   web:
     resources:
       static-locations: classpath:/templates/
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://124.71.136.187:13316/security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
+    url: jdbc:mysql://www.wzdsl.com:13316/xmd_security?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true
     username: root
-    password: lx63024477
+    password: 6DYPN426Hx@*iL
   main:
     allow-bean-definition-overriding: true
 
-
+#自定义配置
 com:
   xmd:
     web:
@@ -36,6 +36,8 @@ com:
         # swagger
         - /v3/api-docs/**
         - /doc.html
+        # 端点请求
+        - /monitor/**
 #    #社交登陆配置
     social:
       qq:
@@ -62,5 +64,24 @@ springdoc:
 server:
   port: 9999
 #  port: 80
-#  servlet:
-#    context-path: /api/co/
+  servlet:
+    context-path: /api
+
+
+# 端点服务（actuator）
+management:
+  endpoints:
+    web:
+      exposure:
+        # 指定开发端点
+        include: info,health,threaddump,metrics,prometheus
+      # 修改默认请求路径
+      base-path: /monitor
+      # 排除 shutdown
+      exclude: shutdown
+  endpoint:
+    health:
+      # 在health地址下面，显示db、redis、rabbit连接情况等
+      show-details: always
+
+
