@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface SecurityService {
 
+    String obtainUsername(String username);
+    String obtainPassword(String password);
+
     /**
      * 通过用户名查询信息，返回UserDetail用作校验
      * @param username

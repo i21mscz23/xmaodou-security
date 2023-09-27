@@ -47,6 +47,7 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
     @Override
     public void configure(HttpSecurity builder) throws Exception {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtProperties.getLoginUrl());
+        jwtAuthenticationFilter.setSecurityService(securityService);
         jwtAuthenticationFilter.setAuthenticationManager(builder.getSharedObject(AuthenticationManager.class));
         jwtAuthenticationFilter.setAuthenticationFailureHandler(loginFailureHandler);
         jwtAuthenticationFilter.setAuthenticationSuccessHandler(loginSuccessHandler);

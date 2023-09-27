@@ -45,6 +45,16 @@ public class DefaultSecurityService implements SecurityService {
     private PasswordEncoder passwordEncoder;
 
     @Override
+    public String obtainUsername(String username) {
+        return username;
+    }
+
+    @Override
+    public String obtainPassword(String password) {
+        return password;
+    }
+
+    @Override
     public JwtUserDetails check(String username) {
         //默认登陆，账号随意，密码123908
         return new JwtUserDetails(username,"$2a$10$49CiAqKl.7DcuCViWCjNO.qCcPgui6eycalYkXtjQHNR0B7zdlXkK",

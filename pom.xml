@@ -7,7 +7,7 @@
     <groupId>com.github.i21mscz23</groupId>
     <artifactId>xmaodou-security</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.7-RELEASE</version>
+    <version>1.0.8-RELEASE</version>
     <url>https://github.com/i21mscz23/xmaodou-security</url>
     <description>security</description>
     <name>security</name>
@@ -18,11 +18,11 @@
     </modules>
 
     <properties>
-        <revision>1.0.7-RELEASE</revision>
+        <revision>1.0.8-RELEASE</revision>
 
         <i21mscz23.support-tools.version>1.0.8-RELEASE</i21mscz23.support-tools.version>
         <i21mscz23.security-social.version>1.0.5-RELEASE</i21mscz23.security-social.version>
-        <i21mscz23.security-jwt.version>1.0.7-RELEASE</i21mscz23.security-jwt.version>
+        <i21mscz23.security-jwt.version>1.0.8-RELEASE</i21mscz23.security-jwt.version>
 
         <java-jwt.version>3.19.2</java-jwt.version>
         <json-path.version>2.6.0</json-path.version>
@@ -38,7 +38,7 @@
         <connection>scm:https://github.com/i21mscz23/xmaodou-security</connection>
         <developerConnection>scm:https://github.com/i21mscz23/xmaodou-security</developerConnection>
         <url>https://github.com/i21mscz23/xmaodou-security</url>
-        <tag>1.0.7-RELEASE</tag>
+        <tag>1.0.8-RELEASE</tag>
     </scm>
 
 
@@ -84,14 +84,6 @@
                 <artifactId>xmaodou-social</artifactId>
                 <version>${i21mscz23.security-social.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.github.i21mscz23</groupId>
-                <artifactId>xmaodou-jwt</artifactId>
-                <version>${i21mscz23.security-jwt.version}</version>
-            </dependency>
-
-
 
         </dependencies>
     </dependencyManagement>
@@ -140,7 +132,7 @@
                 </executions>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
@@ -153,7 +145,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

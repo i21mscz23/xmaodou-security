@@ -1,6 +1,7 @@
 package com.xmd.authentication;
 
 
+import com.xmd.service.SecurityService;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -21,6 +22,8 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     private String usernameParameter = "username";
     private String passwordParameter = "password";
     private boolean postOnly = true;
+
+    private SecurityService securityService;
 
     public JwtAuthenticationFilter(String loginUrl) {
         super(new AntPathRequestMatcher(loginUrl, "POST"));
@@ -49,10 +52,16 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     }
 
     protected String obtainPassword(HttpServletRequest request) {
+        if(this.securityService != null){
+            return this.securityService.obtainPassword(request.getParameter(this.passwordParameter));
+        }
         return request.getParameter(this.passwordParameter);
     }
 
     protected String obtainUsername(HttpServletRequest request) {
+        if(this.securityService != null){
+            return this.securityService.obtainUsername(request.getParameter(this.usernameParameter));
+        }
         return request.getParameter(this.usernameParameter);
     }
 
@@ -80,5 +89,13 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
     public final String getPasswordParameter() {
         return this.passwordParameter;
+    }
+
+    public SecurityService getSecurityService() {
+        return securityService;
+    }
+
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
     }
 }
